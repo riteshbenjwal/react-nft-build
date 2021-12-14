@@ -1,11 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+
 import "./Main.scss";
 
 import instagramLogo from "../assets/owner/instagram.png";
 import twitterLogo from "../assets/owner/twitter.png";
 import moreIcon from "../assets/owner/more.png";
 
-const Main = () => {
+const Main = ({selectedPunk, punkListData}) => {
+
+  const [activePunk, setActivePunk] = useState(punkListData[0]);
+
+ 
+
+  useEffect(() => {
+    setActivePunk(punkListData[selectedPunk]);
+  }, [punkListData, selectedPunk]);
+
   return (
     <div className="main">
       <div className="mainContent">
@@ -13,7 +23,7 @@ const Main = () => {
           <div className="punkContainer">
             <img
               src={
-                "https://ipfs.thirdweb.com/ipfs/bafybeigqkficum3anns36jid3dxvc4yfauyuvqjulbg43n23qxn3ce3tyu"
+                activePunk.image_original_url
               }
               className="selectedPunk"
               alt=""
@@ -22,9 +32,8 @@ const Main = () => {
         </div>
         <div className="punkDetails" style={{ color: "#fff" }}>
           <div className="title">
-            {" "}
-            Bandana Punk
-            <span className="itemNumber">#. 3</span>
+            {activePunk.name}
+            <span className="itemNumber"> .# {activePunk.token_id}</span>
           </div>
           <div className="owner">
             <div className="ownerImageContainer">
