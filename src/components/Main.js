@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import "./Main.scss";
 
@@ -6,11 +6,8 @@ import instagramLogo from "../assets/owner/instagram.png";
 import twitterLogo from "../assets/owner/twitter.png";
 import moreIcon from "../assets/owner/more.png";
 
-const Main = ({selectedPunk, punkListData}) => {
-
+const Main = ({ selectedPunk, punkListData }) => {
   const [activePunk, setActivePunk] = useState(punkListData[0]);
-
- 
 
   useEffect(() => {
     setActivePunk(punkListData[selectedPunk]);
@@ -22,9 +19,7 @@ const Main = ({selectedPunk, punkListData}) => {
         <div className="punkHighlight">
           <div className="punkContainer">
             <img
-              src={
-                activePunk.image_original_url
-              }
+              src={activePunk.image_original_url}
               className="selectedPunk"
               alt=""
             />
@@ -47,7 +42,7 @@ const Main = ({selectedPunk, punkListData}) => {
             </div>
             <div className="ownerDetails">
               <div className="ownerNameHandle">
-                <div>0xaa7e2B83F7C1a7aD7204DdD1f9AF5F66762b6760</div>
+                <div>{activePunk.owner.address}</div>
                 <div className="ownerHandle">@riteshbenjwal</div>
               </div>
               <div className="ownerlink">
